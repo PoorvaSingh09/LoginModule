@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {observer, inject} from 'mobx-react'
 
-@inject("navigationStore")
+@inject("loginStore")
 @observer
 export default class Login extends Component {
 
@@ -11,18 +11,17 @@ export default class Login extends Component {
       const {navigate, state, setParams} = this.props.navigation
     return (
         <View>
-            {/* <Text>test</Text> */}
         <Text>Username:</Text>
         <TextInput 
-            onChangeText={(text)=>this.props.navigationStore.setUsername(text)}
+            onChangeText={(text)=>this.props.loginStore.setUsername(text)}
         />
         <Text>Password:</Text>
         <TextInput 
-            onChangeText={(text)=>this.props.navigationStore.setPassword(text)}
+            onChangeText={(text)=>this.props.loginStore.setPassword(text)}
         />
         <TouchableOpacity
             onPress={() => {
-                this.props.navigationStore.login()
+                this.props.loginStore.login()
                 navigate("Home", {title: "Home", parentKey: state.key})
             }}
         >
